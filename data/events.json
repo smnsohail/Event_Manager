@@ -52,23 +52,5 @@
     "endTime": "2025-06-28T17:00:00+05:30",
     "recurrence": "none",
     "createdAt": "2025-06-28T15:06:42.191Z"
-  },
-  {
-    "id": "9f1fa341-1067-4742-bf3f-90fbc16756ab",
-    "title": "Quick Test Meeting",
-    "description": "This should trigger reminder in 1 min",
-    "startTime": "2025-06-28T16:42:00+05:30",
-    "endTime": "2025-06-28T17:00:00+05:30",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T15:11:13.820Z"
-  },
-  {
-    "id": "fba8bf0d-a5c7-4291-adbc-6fcaaf8c154b",
-    "title": "Quick Test Meeting-222222",
-    "description": "This should trigger reminder in 1 min",
-    "startTime": "2025-06-28T16:44:00",
-    "endTime": "2025-06-28T17:00:00",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T15:13:45.448Z"
   }
 ]
