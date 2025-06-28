@@ -1,8 +1,8 @@
-📅 Event Scheduler System (Node.js + Express)
+#📅 Event Scheduler System (Node.js + Express)
 
 A simple yet powerful Event Scheduler System built using Node.js, Express.js, and file-based JSON storage. This backend system allows users to create, view, search, update, delete, and receive reminders for events with support for recurring events and email notifications.
 
-🚀 Features
+🚀 Features 
 
 ✅ Create events with title, description, start & end times✅ List all events sorted by start time✅ Update or delete events by ID✅ Search events by title or description✅ Persistent storage in events.json✅ Recurring events: daily, weekly, monthly✅ Reminders for upcoming events (within the next 60 minutes)✅ Email notifications (using Nodemailer)✅ Timezone support (IST - UTC+5:30)
 
