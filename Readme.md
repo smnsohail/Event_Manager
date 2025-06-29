@@ -1,13 +1,26 @@
-#📅 Event Scheduler System (Node.js + Express)
+# 📅 Event Scheduler System (Node.js + Express)
 
-A simple yet powerful Event Scheduler System built using Node.js, Express.js, and file-based JSON storage. This backend system allows users to create, view, search, update, delete, and receive reminders for events with support for recurring events and email notifications.
+A simple yet powerful backend-only Event Scheduler System built using **Node.js**, **Express.js**, and **file-based JSON storage**. It allows users to **create**, **view**, **search**, **update**, **delete**, and receive **email reminders** for events. The system also supports **recurring events** and **runs reminders every minute**.
 
-🚀 Features 
+---
 
-✅ Create events with title, description, start & end times✅ List all events sorted by start time✅ Update or delete events by ID✅ Search events by title or description✅ Persistent storage in events.json✅ Recurring events: daily, weekly, monthly✅ Reminders for upcoming events (within the next 60 minutes)✅ Email notifications (using Nodemailer)✅ Timezone support (IST - UTC+5:30)
+## ✨ Features
 
-📂 Project Structure
+- Create events with title, description, startTime, endTime, and optional recurrence
+- View all events sorted by `startTime`
+- Update or delete events by ID
+- Search events by title or description
+- Reminders for upcoming events (within the next 60 minutes)
+- Email reminders using Gmail SMTP (Nodemailer)
+- Recurring events: `daily`, `weekly`, `monthly`
+- Time input/output uses **UTC format only** (`YYYY-MM-DDTHH:MM:SSZ`)
 
+---
+
+## 🔹 Project Structure
+
+```bash
+.
 ├── controllers/
 │   └── eventController.js
 ├── models/
@@ -15,129 +28,190 @@ A simple yet powerful Event Scheduler System built using Node.js, Express.js, an
 ├── routes/
 │   └── eventRoutes.js
 ├── helpers/
-│   └── reminderChecker.js
+│   ├── reminderChecker.js
+│   └── emailService.js
 ├── events.json
+├── .env              # Local environment variables (ignored by Git)
+├── .env.example      # Example for GitHub
 ├── server.js
-├── .env
-└── package.json
+├── package.json
+└── README.md
+```
 
-⚙️ Setup & Installation
+---
 
-Clone the repository
+## ⚙️ Prerequisites
 
+### 1. Install Node.js
+Download and install the latest LTS version of Node.js from [https://nodejs.org](https://nodejs.org).
+
+---
+
+## ⚡ Setup & Installation
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/your-username/event-scheduler-backend.git
 cd event-scheduler-backend
+```
 
-Install dependencies
+### 2. Install dependencies
 
+```bash
 npm install
+```
 
-Environment setupCreate a .env file with the following:
+This will install:
+- `express` - Web server framework
+- `nodemon` - For auto-reloading in dev (used via `npm run dev`)
+- `uuid` - For generating unique IDs for events
+- `dotenv` - For loading environment variables
+- `nodemailer` - For sending emails
+- `dayjs` - For time/date formatting and difference calculations
 
+### 3. Add environment variables
+
+Create a `.env` file in the root folder (this file is ignored by Git).
+We have .env.example in this project, rename it to .env and add your credentials as shown below.
+Prefer using Gmail Service to test.
+
+Example:
+```env
 PORT=5000
-EMAIL_USER=your_email@example.com
-EMAIL_PASS=your_email_password_or_app_password
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_app_password
+REMINDER_EMAIL=recipient@example.com
+```
 
-Start the server
+> See `.env.example` in the repo for reference.
 
+### 4. Run the project
+
+```bash
 npm run dev
+```
 
-The server will start on http://localhost:5000 by default.
+> Runs server using `nodemon` at `http://localhost:5000`
 
-🔌 API Endpoints (Base: /api/events)
+---
 
-➕ Create Event
+## 🔌 API Endpoints
 
+**Base URL:** `http://localhost:5000/api/events`
+
+### ➕ Create Event
+
+```http
 POST /api/events
+```
 
-Body: UTC + 05:30 =IST (INDIAN STANDARD TIME)
+**Body:**
 
+```json
 {
-  "title": "Team Sync",
-  "description": "Weekly team meeting",
-  "startTime": "2025-06-28T21:00:00+05:30",
-  "endTime": "2025-06-28T22:00:00+05:30",
-  "recurrence": "weekly"
+  "title": "Project Demo",
+  "description": "Final presentation",
+  "startTime": "2025-06-29T10:30:00Z",
+  "endTime": "2025-06-29T11:30:00Z",
+  "recurrence": "none"
 }
+```
 
-📄 Get All Events (sorted by start time)
+> ⚡ To test email reminder: set `startTime` to **1 hour ahead of current UTC time**
 
+### 📄 Get All Events
+
+```http
 GET /api/events
+```
 
-🔍 Search Events
+### 🔍 Search Events
 
-GET /api/events/search?query=meeting
+```http
+GET /api/events/search?query=demo
+```
 
-🔎 Get Event by ID
+### 🔎 Get Event by ID
 
+```http
 GET /api/events/:id
+```
 
-✏️ Update Event by ID
+### ✏️ Update Event
 
+```http
 PUT /api/events/:id
+```
 
-Body (partial updates allowed):
+**Partial body example:**
 
+```json
 {
   "title": "Updated Title"
 }
+```
 
-❌ Delete Event
+### ❌ Delete Event
 
+```http
 DELETE /api/events/:id
+```
 
-⏰ Reminder System
+---
 
-Runs every minute
+## ⏰ Reminder System
 
-Checks for events starting in the next 60 minutes
+- Runs **every minute** in the background
+- Logs reminders in console
+- Sends **email** for events that start within the next hour
+- Uses `REMINDER_EMAIL` from `.env` for delivery
 
-Logs to the console: "🔔 Reminder: [title] at [time]"
+---
 
-Can also send email reminders (configured via Nodemailer)
+## 🔄 Recurring Events
 
-🔁 Recurring Events
+Supports:
 
-Supports recurring types:
+- `daily`
+- `weekly`
+- `monthly`
+- `none` (default)
 
-none
+---
 
-daily
+## ✉️ Email Notifications
 
-weekly
+- Uses **Nodemailer** with Gmail SMTP
+- Ensure Gmail account has **App Passwords** enabled
+- `.env` must include:
 
-monthly
+```env
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_app_password
+REMINDER_EMAIL=recipient@example.com
+```
 
-These are expanded internally at runtime or during reminder checks.
+---
 
-✉️ Email Notifications
+## 📂 Postman Collection
 
-Uses Nodemailer to send reminders.
-Make sure to configure the .env variables with a real email.
+Import this collection into Postman:
 
-📬 Postman Collection
+👉 [Event Scheduler Postman Collection](https://www.postman.com/mahammadsohilmnadaf/workspace/event-scheduler-biz-digital/collection/46045007-c769901b-3dec-49af-8d44-37ce0783b4d8?action=share&creator=46045007)
 
-A complete Postman Collection is included for testing all endpoints. All time examples use IST (UTC+05:30).
+> All time values must be in **UTC format** (`YYYY-MM-DDTHH:MM:SSZ`).
 
-Import the file Event Scheduler.postman_collection.json into Postman.
+---
 
-📌 Tech Stack
+## 👩‍💼 Author
 
-Node.js
+**Mahammadsohil M Nadaf**  
+🔗 [GitHub](https://github.com/smnsohail)  
+📍 Naregal, Karnataka, India
 
-Express.js
+---
 
-UUID
+## 📄 License
 
-Dotenv
-
-Nodemailer
-
-🧑‍💻 Author
-
-Mahammadsohil M Nadaf🔗 GitHub📍 Naregal, Karnataka, India
-
-📄 License
-
-This project is open-source and available under the MIT License.
-
+This project is open-source and available under the **MIT License**.
