@@ -1,56 +1,20 @@
 [
   {
-    "id": "22c78b64-473a-4606-829d-82c1228685bf",
-    "title": "Project Kickoff",
-    "description": "Initial team meeting",
-    "startTime": "2025-07-01T10:00:00",
-    "endTime": "2025-07-01T11:00:00",
+    "id": "513c4437-7858-4c36-a253-b2e425a78802",
+    "title": "Reminder Email Test",
+    "description": "This event should trigger a reminder within the next hour.",
+    "startTime": "2025-06-29T13:30:00Z",
+    "endTime": "2025-06-29T14:30:00Z",
     "recurrence": "none",
-    "createdAt": "2025-06-28T12:09:19.611Z"
+    "createdAt": "2025-06-29T09:24:26.479Z"
   },
   {
-    "id": "f3b7cc86-f19f-4523-a4b0-717cbd88bb62",
-    "title": "Attend Marriage",
-    "description": "Need to attend marrriage party",
-    "startTime": "2025-06-01T10:00:00",
-    "endTime": "2025-06-01T11:00:00",
+    "id": "272d6208-d5d2-43a0-a0ed-981ee75d8e0f",
+    "title": "Live Email Reminder Test",
+    "description": "Testing real-time email functionality from reminder system",
+    "startTime": "2025-06-29T10:26:00Z",
+    "endTime": "2025-06-29T11:00:00Z",
     "recurrence": "none",
-    "createdAt": "2025-06-28T13:29:46.136Z"
-  },
-  {
-    "id": "c79ec199-22fd-40e8-b10e-c71fc127796e",
-    "title": "Birthday",
-    "description": "Need to attend birthday party",
-    "startTime": "2025-07-02T00:00:00",
-    "endTime": "2025-07-02T01:30:00",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T13:35:51.665Z"
-  },
-  {
-    "id": "d2a15327-9abe-4654-9aa6-d741a2688d05",
-    "title": "Assignment",
-    "description": "Biz Digital Assignment",
-    "startTime": "2025-06-28T12:17:00",
-    "endTime": "2025-06-29T18:00:00",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T14:52:19.621Z"
-  },
-  {
-    "id": "e501647a-a871-434f-9618-8537a04ce837",
-    "title": "Assignment",
-    "description": "Biz Digital Assignment",
-    "startTime": "2025-06-28T17:33:00",
-    "endTime": "2025-06-28T18:00:00",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T15:02:33.337Z"
-  },
-  {
-    "id": "a1b701c8-ba90-433c-9dd7-8a075db8796a",
-    "title": "Quick Test Meeting",
-    "description": "This should trigger reminder in 1 min",
-    "startTime": "2025-06-28T16:30:00+05:30",
-    "endTime": "2025-06-28T17:00:00+05:30",
-    "recurrence": "none",
-    "createdAt": "2025-06-28T15:06:42.191Z"
+    "createdAt": "2025-06-29T09:27:07.022Z"
   }
 ]

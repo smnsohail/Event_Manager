@@ -1,8 +1,8 @@
 import { getAllEvents } from "../models/eventModel.js";
 import { sendReminderEmail } from './emailService.js';
-dotenv.config({path: '../.env'});
 import dotenv from 'dotenv';
 dotenv.config();
+
 
 export async function checkUpcomingReminders() {
   const now = new Date();
@@ -47,7 +47,7 @@ export async function checkUpcomingReminders() {
 
       const subject = `Reminder: ${event.title}`;
       const message = `Hey, this is a reminder for "${event.title}" happening at ${event.startTime}.\n\nDetails:\n${event.description}`;
-      const recipient =  process.env.RECIPIENT_EMAIL// Hardcoded or add `email` to event if needed
+      const recipient = process.env.RECIPIENT_EMAIL;
 
       sendReminderEmail(recipient, subject, message);
     });
