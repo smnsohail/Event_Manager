@@ -52,7 +52,7 @@ Download and install the latest LTS version of Node.js from [https://nodejs.org]
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/event-scheduler-backend.git
+git clone https://github.com/smnsohail/Event_Manager.git
 cd event-scheduler-backend
 ```
 
